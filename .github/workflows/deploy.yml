@@ -1,0 +1,43 @@
+name: 'Deploy'
+
+on:
+    push:
+        branches:
+          - master
+
+permissions:
+    contents: read
+    pages: write
+    id-token: write
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        steps:
+          - name: Checkout
+            uses: actions/checkout@master
+
+          - name: Setup Deno
+            uses: denoland/setup-deno@v1
+            with:
+                deno-version: vx.x.x
+
+          - name: Build
+            run: |
+                deno task cache
+                deno task build
+
+          - name: Setup Pages
+            uses: actions/configure-pages@v2
+
+          - name: Upload artifact
+            uses: actions/upload-pages-artifact@v1
+            with:
+                path: './dist'
+
+          - name: Deploy to GitHub Pages
+            id: deployment
+            uses: actions/deploy-pages@v1
