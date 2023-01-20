@@ -3,5 +3,12 @@
     "version": "0.1.0",
     "description": "",
     "author": "MT224244",
-    "private": true
+    "private": true,
+    "scripts": {
+        "icon": "icon-gen -r --ico --ico-name favicon -i public/icon.png -o dist"
+    },
+    "devDependencies": {
+        "@types/node": "^18.11.18",
+        "icon-gen": "^3.0.1"
+    }
 }

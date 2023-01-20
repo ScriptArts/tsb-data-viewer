@@ -14,6 +14,7 @@ export default defineConfig({
     },
     root: './src',
     base,
+    publicDir: '../public',
     plugins: [
         solid(),
     ],
