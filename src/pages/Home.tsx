@@ -43,7 +43,7 @@ export const Home = () => {
                     <Grid item xs={12}>
                         <Button
                             component={Link}
-                            href='/sacred_treasure'
+                            href='./sacred_treasure'
                             sx={{
                                 display: 'block',
                                 padding: '0',
