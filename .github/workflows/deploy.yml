@@ -37,6 +37,7 @@ jobs:
 
           - name: Generate Icon
             run: |
+                yarn --frozen-lockfile --non-interactive --network-timeout 300000
                 yarn icon
 
           - name: Setup Pages
