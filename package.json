@@ -14,11 +14,14 @@
         "@solidjs/meta": "^0.28.2",
         "@solidjs/router": "^0.7.0",
         "@suid/material": "^0.9.1",
+        "@suid/system": "^0.8.1",
+        "semver": "^7.3.8",
         "solid-js": "^1.6.9"
     },
     "devDependencies": {
         "@suid/vite-plugin": "^0.1.2",
         "@types/node": "^18.11.18",
+        "@types/semver": "^7.3.13",
         "gh-pages": "^5.0.0",
         "icon-gen": "^3.0.1",
         "vite": "^4.0.4",

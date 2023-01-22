@@ -4,10 +4,13 @@ specifiers:
   '@solidjs/meta': ^0.28.2
   '@solidjs/router': ^0.7.0
   '@suid/material': ^0.9.1
+  '@suid/system': ^0.8.1
   '@suid/vite-plugin': ^0.1.2
   '@types/node': ^18.11.18
+  '@types/semver': ^7.3.13
   gh-pages: ^5.0.0
   icon-gen: ^3.0.1
+  semver: ^7.3.8
   solid-js: ^1.6.9
   vite: ^4.0.4
   vite-plugin-solid: ^2.5.0
@@ -16,11 +19,14 @@ dependencies:
   '@solidjs/meta': 0.28.2_solid-js@1.6.9
   '@solidjs/router': 0.7.0_solid-js@1.6.9
   '@suid/material': 0.9.1_solid-js@1.6.9
+  '@suid/system': 0.8.1_solid-js@1.6.9
+  semver: 7.3.8
   solid-js: 1.6.9
 
 devDependencies:
   '@suid/vite-plugin': 0.1.2_vite@4.0.4
   '@types/node': 18.11.18
+  '@types/semver': 7.3.13
   gh-pages: 5.0.0
   icon-gen: 3.0.1
   vite: 4.0.4_@types+node@18.11.18
@@ -726,6 +732,10 @@ packages:
     resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
     dev: true
 
+  /@types/semver/7.3.13:
+    resolution: {integrity: sha512-21cFJr9z3g5dW8B0CVI9g2O9beqaThGQ6ZFBqHfwhzLDKUxaqTIy3vnfah/UPkfOiF2pLq+tGz+W8RyCskuslw==}
+    dev: true
+
   /aggregate-error/3.1.0:
     resolution: {integrity: sha512-4I7Td01quW/RpocfNayFdFVk1qSuoh0E7JrbRJ16nH01HhKFQ88INq9Sd+nd72zqRySlr9BmDA8xlEJ6vJMrYA==}
     engines: {node: '>=8'}
@@ -1325,7 +1335,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
-    dev: true
 
   /make-dir/3.1.0:
     resolution: {integrity: sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==}
@@ -1610,7 +1619,6 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
-    dev: true
 
   /sharp/0.30.7:
     resolution: {integrity: sha512-G+MY2YW33jgflKPTXXptVO28HvNOo9G3j0MybYAHeEmby+QuD2U98dT6ueht9cv/XDqZspSpIhoSW+BAKJ7Hig==}
@@ -1848,4 +1856,3 @@ packages:
 
   /yallist/4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
-    dev: true
