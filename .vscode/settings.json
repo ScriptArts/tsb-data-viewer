@@ -1,7 +1,0 @@
-{
-  "deno.enable": true,
-  "deno.enablePaths": [
-    "./src",
-    "vite.config.mts"
-  ]
-}

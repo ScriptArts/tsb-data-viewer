@@ -8,7 +8,7 @@ import {
 } from '@suid/material';
 import { Link } from '@solidjs/router';
 import * as Meta from '@solidjs/meta';
-import { Title } from '../components/Title.tsx';
+import { Title } from '../components/Title';
 
 export const Home = () => {
     return (

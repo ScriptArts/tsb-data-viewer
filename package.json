@@ -5,10 +5,23 @@
     "author": "MT224244",
     "private": true,
     "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "deploy": "gh-pages -d dist",
         "icon": "icon-gen -r --ico --ico-name favicon -i public/icon.png -o dist"
     },
+    "dependencies": {
+        "@solidjs/meta": "^0.28.2",
+        "@solidjs/router": "^0.7.0",
+        "@suid/material": "^0.9.1",
+        "solid-js": "^1.6.9"
+    },
     "devDependencies": {
+        "@suid/vite-plugin": "^0.1.2",
         "@types/node": "^18.11.18",
-        "icon-gen": "^3.0.1"
+        "gh-pages": "^5.0.0",
+        "icon-gen": "^3.0.1",
+        "vite": "^4.0.4",
+        "vite-plugin-solid": "^2.5.0"
     }
 }

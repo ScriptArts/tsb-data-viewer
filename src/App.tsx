@@ -2,8 +2,8 @@ import { Router, Routes, Route } from '@solidjs/router';
 import { MetaProvider } from '@solidjs/meta';
 import { GlobalStyles } from '@suid/material';
 
-import { Home } from './pages/Home.tsx';
-import { SacredTreasure } from './pages/SacredTreasure.tsx';
+import { Home } from './pages/Home';
+import { SacredTreasure } from './pages/SacredTreasure';
 
 export const App = () => {
     return (

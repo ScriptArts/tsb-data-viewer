@@ -20,25 +20,25 @@ jobs:
           - name: Checkout
             uses: actions/checkout@master
 
-          - name: Setup Deno
-            uses: denoland/setup-deno@v1
-            with:
-                deno-version: vx.x.x
-
-          - name: Build
-            run: |
-                deno task cache
-                deno task build
-
           - name: Setup Node
             uses: actions/setup-node@v3
             with:
                 node-version: 18
 
+          - name: Setup Pnpm
+            uses: pnpm/action-setup@v2
+            with:
+                version: 7
+                run_install: |
+                  - args: [--frozen-lockfile]
+
+          - name: Build
+            run: |
+                pnpm run build
+
           - name: Generate Icon
             run: |
-                yarn --frozen-lockfile --non-interactive --network-timeout 300000
-                yarn icon
+                pnpm run icon
 
           - name: Setup Pages
             uses: actions/configure-pages@v2

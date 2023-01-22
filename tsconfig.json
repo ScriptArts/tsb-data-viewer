@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "module": "ESNext",
+        "target": "ESNext",
+        "moduleResolution": "Node",
+        "skipLibCheck": true,
+        "strict": true,
+        "allowSyntheticDefaultImports": true,
+        "lib": [
+            "esnext",
+            "dom",
+            "dom.iterable"
+        ],
+        "types": [
+            "node",
+            "vite/client"
+        ],
+        "jsx": "react-jsx",
+        "jsxImportSource": "solid-js"
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}

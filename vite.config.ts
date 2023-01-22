@@ -1,11 +1,11 @@
-import { defineConfig } from 'npm:vite';
-import solid from 'npm:vite-plugin-solid';
-import suid from 'npm:@suid/vite-plugin';
+import { defineConfig } from 'vite';
+import solid from 'vite-plugin-solid';
+import suid from '@suid/vite-plugin';
 
-const repo = Deno.env.get('GITHUB_REPOSITORY');
+const repo = process.env.GITHUB_REPOSITORY;
 const base = `/${repo?.split('/')[1] ?? ''}`;
 
-const mode = Deno.env.get('NODE_ENV');
+const mode = process.env.NODE_ENV;
 const isDev = mode === 'development';
 
 export default defineConfig({
