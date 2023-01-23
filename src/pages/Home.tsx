@@ -8,12 +8,10 @@ import {
 } from '@suid/material';
 import { Link } from '@solidjs/router';
 import * as Meta from '@solidjs/meta';
-import { Title } from '../components/Title';
 
 export const Home = () => {
     return (
         <>
-            <Title />
             <Meta.Link rel='preload' as='image' href='icon.png' />
             <Meta.Link rel='preload' as='image' href='sacred_treasure.png' />
 
@@ -26,7 +24,7 @@ export const Home = () => {
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
-                            margin: '3rem 0',
+                            marginBottom: '2rem',
                         }}
                     >
                         <img src="icon.png" alt="The Sky Blessing" width={256} height={256} />
