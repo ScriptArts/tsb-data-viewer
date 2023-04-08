@@ -37,7 +37,7 @@ export const VersionSelector = (props: BoxProps) => {
         if (filteredVersions.length > 0) {
             const defaultVersion = filteredVersions[1];
             if (queryVersion === null || !filteredVersions.find(v => v.text === queryVersion)) {
-                setSearchParams({ v: defaultVersion.text });
+                setSearchParams({ v: defaultVersion.text }, { replace: true });
             }
         }
     }, [queryVersion, filteredVersions, setSearchParams]);

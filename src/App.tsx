@@ -1,4 +1,4 @@
-import { Route, RouterProvider, createHashRouter, createRoutesFromElements } from 'react-router-dom';
+import { Navigate, Route, RouterProvider, createHashRouter, createRoutesFromElements } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { Helmet } from 'react-helmet-async';
 import { useAppContext } from './contexts/AppContext';
@@ -17,6 +17,7 @@ const router = createHashRouter(createRoutesFromElements(
             element={<Artifact />}
             handle={{ name: '神器' }}
         />
+        <Route path='*' element={<Navigate replace to='/' />} />
     </Route>,
 ));
 
