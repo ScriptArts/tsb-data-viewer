@@ -5,11 +5,13 @@
     "author": "MT224244",
     "license": "MIT",
     "private": true,
+    "type": "module",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
         "deploy": "gh-pages -d dist",
-        "icon": "icon-gen -r --ico --ico-name favicon -i public/icon.png -o dist"
+        "icon": "icon-gen -r --ico --ico-name favicon -i public/icon.png -o dist",
+        "lint": "eslint ."
     },
     "dependencies": {
         "@primer/react": "^35.24.0",
@@ -26,7 +28,13 @@
         "@types/react-dom": "^18.0.11",
         "@types/semver": "^7.3.13",
         "@types/styled-components": "^5.1.26",
+        "@typescript-eslint/eslint-plugin": "^5.57.1",
+        "@typescript-eslint/parser": "^5.57.1",
         "@vitejs/plugin-react": "^3.1.0",
+        "eslint": "^8.38.0",
+        "eslint-define-config": "^1.17.0",
+        "eslint-plugin-react": "^7.32.2",
+        "eslint-plugin-react-hooks": "^4.6.0",
         "gh-pages": "^5.0.0",
         "icon-gen": "^3.0.1",
         "typescript": "^5.0.4",

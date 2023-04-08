@@ -32,6 +32,10 @@ jobs:
                 run_install: |
                   - args: [--frozen-lockfile]
 
+          - name: Lint
+            run: |
+                pnpm run lint
+
           - name: Build
             run: |
                 pnpm run build
