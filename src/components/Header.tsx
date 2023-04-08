@@ -32,7 +32,10 @@ export const Header = () => {
                 />
                 <Breadcrumbs>
                     {crumbs.map(crumb => {
-                        const url = new URL(location.href.replace('/#', ''));
+                        const url = new URL(location.href
+                            .replace('/#', '')
+                            .replace(BASE_URL, '/'),
+                        );
                         return (
                             url.pathname === crumb.path
                                 ? <span key={crumb.path}>{crumb.name}</span>
