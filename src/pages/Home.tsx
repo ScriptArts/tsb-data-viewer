@@ -1,91 +1,78 @@
-import {
-    Container,
-    Grid,
-    Typography,
-    Card,
-    Box,
-    Button,
-} from '@suid/material';
-import { Link } from '@solidjs/router';
-import * as Meta from '@solidjs/meta';
+import { Helmet } from 'react-helmet-async';
+import { ActionList, Box } from '@primer/react';
+import { Title } from '../components/Title';
+import { RouterLink } from '../components/RouterLink';
 
 export const Home = () => {
     return (
         <>
-            <Meta.Link rel='preload' as='image' href='icon.png' />
-            <Meta.Link rel='preload' as='image' href='sacred_treasure.png' />
+            <Title />
+            <Helmet>
+                <link rel='preload' as='image' type='image/png' href={`${BASE_URL}icon.png`} />
+                <link rel='preload' as='image' type='image/png' href={`${BASE_URL}sacred_treasure.png`} />
+            </Helmet>
 
-            <Container>
-                <Grid container spacing={2}>
-                    <Grid
-                        item
-                        xs={12}
+            <Box
+                display='flex'
+                flexDirection='column'
+                alignItems='center'
+                marginTop='calc(3vw + 1rem)'
+            >
+                <Box
+                    as='img'
+                    src='icon.png'
+                    alt=''
+                    width='calc(50% + 5vw)'
+                    height='calc(50% + 5vw)'
+                    maxWidth={256}
+                    maxHeight={256}
+                />
+
+                <Box
+                    as='h1'
+                    color='white'
+                    fontFamily='JF Dot K12'
+                    fontSize='min(50% + 5vw, 2.7rem)'
+                    fontWeight='normal'
+                    textShadow='2px 2px 2px black'
+                >{APP_TITLE}</Box>
+
+                <ActionList
+                    sx={{
+                        width: 'calc(90% + 5vw)',
+                        maxWidth: 'small',
+                        li: {
+                            height: '100%',
+                        },
+                    }}
+                >
+                    <ActionList.LinkItem
+                        as={RouterLink}
+                        to='/sacred_treasure'
                         sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
                             alignItems: 'center',
-                            marginBottom: '2rem',
+                            padding: 'min(3vw, 1rem)',
+                            fontFamily: 'JF Dot K12',
+                            fontSize: 'min(50% + 3vw, 1.3rem)',
+                            backgroundColor: 'btn.bg',
+                            color: 'btn.text',
+                            textAlign: 'center',
                         }}
                     >
-                        <img src="icon.png" alt="The Sky Blessing" width={256} height={256} />
-                        <Typography
-                            variant='h4'
-                            component='h1'
-                            sx={{
-                                color: 'white',
-                                fontFamily: 'Stick',
-                                textShadow: '2px 2px 2px black',
-                            }}
-                        >{APP_TITLE}</Typography>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Button
-                            component={Link}
-                            href='./sacred_treasure'
-                            sx={{
-                                display: 'block',
-                                padding: '0',
-                                textDecoration: 'none',
-                            }}
-                        >
-                            <Card
-                                sx={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    padding: '0.5rem',
-                                }}
-                            >
-                                <Box
-                                    component='img'
-                                    src='sacred_treasure.png'
-                                    alt='神器'
-                                    sx={{
-                                        width: '64px',
-                                        height: '64px',
-                                        imageRendering: 'pixelated',
-                                    }}
-                                />
-                                <Box
-                                    sx={{
-                                        flexGrow: 1,
-                                        position: 'absolute',
-                                        left: 0,
-                                        width: '100%',
-                                    }}
-                                >
-                                    <Typography
-                                        variant='h5'
-                                        sx={{
-                                            fontFamily: 'Stick',
-                                            textAlign: 'center',
-                                        }}
-                                    >神器</Typography>
-                                </Box>
-                            </Card>
-                        </Button>
-                    </Grid>
-                </Grid>
-            </Container>
+                        <ActionList.LeadingVisual>
+                            <Box
+                                as='img'
+                                src='sacred_treasure.png'
+                                alt=''
+                                width='min(50% + 3vw, 2rem)'
+                                height='min(50% + 3vw, 2rem)'
+                                sx={{ imageRendering: 'pixelated' }}
+                            />
+                        </ActionList.LeadingVisual>
+                        神器
+                    </ActionList.LinkItem>
+                </ActionList>
+            </Box>
         </>
     );
 };

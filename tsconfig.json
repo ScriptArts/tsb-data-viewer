@@ -16,7 +16,7 @@
             "vite/client"
         ],
         "jsx": "react-jsx",
-        "jsxImportSource": "solid-js"
+        "jsxImportSource": "react"
     },
     "exclude": [
         "node_modules"

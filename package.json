@@ -1,8 +1,9 @@
 {
     "name": "tsb-data-viewer",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "description": "",
     "author": "MT224244",
+    "license": "MIT",
     "private": true,
     "scripts": {
         "dev": "vite",
@@ -11,20 +12,31 @@
         "icon": "icon-gen -r --ico --ico-name favicon -i public/icon.png -o dist"
     },
     "dependencies": {
-        "@solidjs/meta": "^0.28.2",
-        "@solidjs/router": "^0.7.0",
-        "@suid/material": "^0.9.1",
-        "@suid/system": "^0.8.1",
+        "@primer/react": "^35.24.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-helmet-async": "^1.3.0",
+        "react-router-dom": "^6.10.0",
         "semver": "^7.3.8",
-        "solid-js": "^1.6.9"
+        "styled-components": "^5.3.9"
     },
     "devDependencies": {
-        "@suid/vite-plugin": "^0.1.2",
-        "@types/node": "^18.11.18",
+        "@types/node": "^18.15.11",
+        "@types/react": "^18.0.33",
+        "@types/react-dom": "^18.0.11",
         "@types/semver": "^7.3.13",
+        "@types/styled-components": "^5.1.26",
+        "@vitejs/plugin-react": "^3.1.0",
         "gh-pages": "^5.0.0",
         "icon-gen": "^3.0.1",
-        "vite": "^4.0.4",
-        "vite-plugin-solid": "^2.5.0"
+        "typescript": "^5.0.4",
+        "vite": "^4.2.1"
+    },
+    "pnpm": {
+        "peerDependencyRules": {
+            "ignoreMissing": [
+                "react-is"
+            ]
+        }
     }
 }

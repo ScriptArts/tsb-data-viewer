@@ -1,13 +1,16 @@
-import * as Meta from '@solidjs/meta';
+import { useEffect } from 'react';
+import { useAppContext } from '../contexts/AppContext';
 
 type Props = {
     title?: string;
 };
 
-export const Title = (props: Props) => {
-    return (
-        <Meta.Title>
-            {APP_TITLE + (props.title ? ` - ${props.title}` : '')}
-        </Meta.Title>
-    );
+export const Title = ({ title }: Props) => {
+    const { setTitle } = useAppContext();
+
+    useEffect(() => {
+        setTitle(title);
+    }, [title, setTitle]);
+
+    return (<></>);
 };

@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite';
-import solid from 'vite-plugin-solid';
-import suid from '@suid/vite-plugin';
+import react from '@vitejs/plugin-react';
 
 const repo = process.env.GITHUB_REPOSITORY;
 const base = `/${repo?.split('/')[1] ?? ''}`;
@@ -18,8 +17,7 @@ export default defineConfig({
     base,
     publicDir: '../public',
     plugins: [
-        solid(),
-        suid(),
+        react(),
     ],
     build: {
         target: 'chrome105',
