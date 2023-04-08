@@ -9,7 +9,7 @@ export const Home = () => {
             <Title />
             <Helmet>
                 <link rel='preload' as='image' type='image/png' href={`${BASE_URL}icon.png`} />
-                <link rel='preload' as='image' type='image/png' href={`${BASE_URL}sacred_treasure.png`} />
+                <link rel='preload' as='image' type='image/png' href={`${BASE_URL}artifact.png`} />
             </Helmet>
 
             <Box
@@ -48,7 +48,7 @@ export const Home = () => {
                 >
                     <ActionList.LinkItem
                         as={RouterLink}
-                        to='/sacred_treasure'
+                        to='/artifact'
                         sx={{
                             alignItems: 'center',
                             padding: 'min(3vw, 1rem)',
@@ -62,7 +62,7 @@ export const Home = () => {
                         <ActionList.LeadingVisual>
                             <Box
                                 as='img'
-                                src='sacred_treasure.png'
+                                src='artifact.png'
                                 alt=''
                                 width='min(50% + 3vw, 2rem)'
                                 height='min(50% + 3vw, 2rem)'

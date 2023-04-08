@@ -2,7 +2,7 @@ import { Route, RouterProvider, createHashRouter, createRoutesFromElements } fro
 import { Home } from './pages/Home';
 import { Helmet } from 'react-helmet-async';
 import { useAppContext } from './contexts/AppContext';
-import { SacredTreasure } from './pages/SacredTreasure';
+import { Artifact } from './pages/Artifact';
 import { DefaultLayout } from './layouts/DefaultLayout';
 
 const router = createHashRouter(createRoutesFromElements(
@@ -13,8 +13,8 @@ const router = createHashRouter(createRoutesFromElements(
     >
         <Route index element={<Home />} />
         <Route
-            path='sacred_treasure'
-            element={<SacredTreasure />}
+            path='artifact'
+            element={<Artifact />}
             handle={{ name: '神器' }}
         />
     </Route>,
