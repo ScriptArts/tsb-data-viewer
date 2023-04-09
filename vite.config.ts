@@ -12,6 +12,7 @@ export default defineConfig({
     define: {
         BASE_URL: JSON.stringify(base),
         APP_TITLE: JSON.stringify('TSB Data Viewer'),
+        DATA_REPO: JSON.stringify('MT224244/tsb-data'),
     },
     root: './src',
     base,

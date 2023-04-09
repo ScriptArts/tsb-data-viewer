@@ -18,7 +18,7 @@ export const useVersions = () => {
     const fetchTags = useCallback(async (controller: AbortController): Promise<Tag[] | null> => {
         try {
             const res = await fetch(
-                'https://api.github.com/repos/MT224244/tsb-data/git/refs/tags',
+                `https://api.github.com/repos/${DATA_REPO}/git/refs/tags`,
                 { signal: controller.signal },
             );
             return res.json();
