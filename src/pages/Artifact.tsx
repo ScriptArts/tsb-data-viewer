@@ -3,13 +3,14 @@ import { useAppContext } from '../contexts/AppContext';
 import { Title } from '../components/Title';
 
 export const Artifact = () => {
-    const { version } = useAppContext();
+    const { artifacts } = useAppContext();
 
     return (
         <>
             <Title title='神器' />
 
-            <Box>Artifact {version}</Box>
+            <Box>Artifact</Box>
+            <Box as='pre' backgroundColor='canvas.default'>{JSON.stringify(artifacts, undefined, 4)}</Box>
         </>
     );
 };
