@@ -1,7 +1,9 @@
 import { ReactNode, createContext, useCallback, useContext, useState } from 'react';
+import { useVersions } from '../hooks/useVersions';
 
 const context = createContext({} as {
     title: string;
+    versions: string[];
     version: string | undefined;
     setTitle: (title?: string) => void;
     setVersion: (version: string) => void;
@@ -21,6 +23,8 @@ export const AppContext = (props: Props) => {
     const [title, _setTitle] = useState(APP_TITLE);
     const [version, setVersion] = useState<string>();
 
+    const versions = useVersions();
+
     const setTitle = useCallback((title?: string) => {
         _setTitle(APP_TITLE + (title ? ` / ${title}` : ''));
     }, []);
@@ -29,6 +33,7 @@ export const AppContext = (props: Props) => {
         <Provider
             value={{
                 title,
+                versions,
                 version,
                 setTitle,
                 setVersion,

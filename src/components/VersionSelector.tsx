@@ -3,15 +3,13 @@ import { useSearchParams } from 'react-router-dom';
 import { Box, SelectPanel, type BoxProps } from '@primer/react';
 import { type ItemInput } from '@primer/react/lib/deprecated/ActionList/List';
 import { useAppContext } from '../contexts/AppContext';
-import { useVersions } from '../hooks/useVersions';
 
 export const VersionSelector = (props: BoxProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selected, setSelected] = useState<ItemInput>();
     const [filter, setFilter] = useState('');
 
-    const { version, setVersion } = useAppContext();
-    const versions = useVersions();
+    const { versions, version, setVersion } = useAppContext();
 
     const [searchParams, setSearchParams] = useSearchParams();
 
