@@ -89,7 +89,7 @@ export type AttackInfo = {
 export type Artifact = {
     id: number;
     item: string;
-    name: TextComponent;
+    name: TextComponent | TextComponent[];
     lore: (TextComponent | TextComponent[])[];
     costText?: TextComponent;
     remainingCount?: number;
