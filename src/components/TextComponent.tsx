@@ -1,18 +1,19 @@
 import { useCallback, useMemo, useState } from 'react';
-import { Box } from '@primer/react';
+import { Box, type BoxProps } from '@primer/react';
 import { useAnimationFrame } from '../hooks/useAnimationFrame';
-import type { TextComponent as TextComponentType } from '../types/Artifact';
 import { useObfuscate } from '../hooks/useObfuscate';
+import type { TextComponent as TextComponentType } from '../types/Artifact';
 
-type Props = {
+type Props = BoxProps & {
     raw: TextComponentType | TextComponentType[];
 };
 
-const Recursive = ({ raw }: Props) => {
+const Recursive = ({ raw, sx, ...props }: Props) => {
     const [text, setText] = useState(
-        raw instanceof Array
-            ? undefined
-            : raw.text ?? `{${raw.nbt}}`,
+        raw instanceof Array ? undefined
+        : raw.text !== undefined ? raw.text
+        : raw.nbt !== undefined ? `{${raw.nbt}}`
+        : undefined,
     );
 
     const replaceColor = useCallback((color?: string) => {
@@ -52,7 +53,7 @@ const Recursive = ({ raw }: Props) => {
     }, [raw]);
 
     if (raw instanceof Array) {
-        const arr = [...raw];
+        const arr = [...raw].flat();
 
         // 上書きしなければ前に定義したものが後ろに引き継がれる
         //   [{ text: 'A', bold: true }, { text: 'B' }, { text: 'C', bold: false }]
@@ -65,10 +66,21 @@ const Recursive = ({ raw }: Props) => {
             }
         }
 
+        // 1文字ずつに分割して改行できるようにする(inline-blockだとブロックごと改行される)
+        const chars: TextComponentType[] = [];
+        for (const x of arr) {
+            if (!x.text) chars.push(x);
+            else {
+                for (const y of [...x.text]) {
+                    chars.push({ ...x, text: y });
+                }
+            }
+        }
+
         return (
             <>
-                {arr.map((x, i) => (
-                    <Recursive key={i} raw={x} />
+                {chars.map((x, i) => (
+                    <Recursive key={i} raw={x} {...props} />
                 ))}
             </>
         );
@@ -76,26 +88,26 @@ const Recursive = ({ raw }: Props) => {
 
     return (
         <Box
-            data-value={raw.text}
             as='span'
             position='relative'
             display='inline-block'
             color={replaceColor(raw.color) ?? 'white'}
             fontFamily='JF Dot K12'
             fontWeight={raw.bold ? 'bold' : undefined}
-            fontSize='min(30% + 2vw, 1.3rem)'
             sx={{
                 whiteSpace: 'pre-wrap',
                 textDecoration: raw.underlined ? 'underline': undefined,
                 transform,
+                ...sx,
             }}
+            {...props}
         >{text}</Box>
     );
 };
 
 export const TextComponent = (props: Props) => {
     return (
-        <Box>
+        <Box lineHeight={props.fontSize}>
             <Recursive {...props} />
         </Box>
     );

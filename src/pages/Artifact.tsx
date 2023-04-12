@@ -39,7 +39,10 @@ export const Artifact = () => {
                             >
                                 <Box as='span'>{artifact.id}</Box>
                                 <ActionList.Description variant='block' sx={{ marginY: '1' }}>
-                                    <TextComponent raw={artifact.name} />
+                                    <TextComponent
+                                        raw={artifact.name}
+                                        fontSize='min(30% + 2vw, 1.3rem)'
+                                    />
                                 </ActionList.Description>
                             </ActionList.LinkItem>
                         </Box>
