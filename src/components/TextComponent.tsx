@@ -1,7 +1,8 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { Box, type BoxProps } from '@primer/react';
 import { useAnimationFrame } from '../hooks/useAnimationFrame';
 import { obfuscate } from '../utils/obfuscate';
+import { colorToRgb } from '../utils/colorToRgb';
 import type { TextComponent as TextComponentType } from '../types/Artifact';
 
 type Props = BoxProps & {
@@ -42,6 +43,21 @@ const Recursive = ({ raw, sx, ...props }: Props) => {
     }, [raw, text]);
     useAnimationFrame(animationFrame);
 
+    const rgb = useMemo(() => {
+        if (raw instanceof Array) return undefined;
+        return colorToRgb(replaceColor(raw.color) ?? 'white');
+    }, [raw, replaceColor]);
+    const color = useMemo(() => {
+        if (!rgb) return undefined;
+        const { r, g, b } = rgb;
+        return `rgb(${r}, ${g}, ${b})`;
+    }, [rgb]);
+    const textShadow = useMemo(() => {
+        if (!rgb) return undefined;
+        const { r, g, b } = rgb;
+        return `1px 1px 0 rgba(${r}, ${g}, ${b}, 0.3)`;
+    }, [rgb]);
+
     if (raw instanceof Array) {
         const arr = [...raw].flat();
 
@@ -69,10 +85,11 @@ const Recursive = ({ raw, sx, ...props }: Props) => {
         <Box
             as='span'
             display='inline'
-            color={replaceColor(raw.color) ?? 'white'}
+            color={color}
             fontFamily='Monocraft, JF Dot K12'
             fontWeight={raw.bold ? 'bold' : undefined}
             fontStyle={raw.italic ? 'italic' : undefined}
+            textShadow={textShadow}
             sx={{
                 whiteSpace: 'pre-wrap',
                 textDecoration: raw.underlined ? 'underline': undefined,
