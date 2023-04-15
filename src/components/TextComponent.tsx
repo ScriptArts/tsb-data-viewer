@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { Box, type BoxProps } from '@primer/react';
 import { useAnimationFrame } from '../hooks/useAnimationFrame';
-import { useObfuscate } from '../hooks/useObfuscate';
+import { obfuscate } from '../utils/obfuscate';
 import type { TextComponent as TextComponentType } from '../types/Artifact';
 
 type Props = BoxProps & {
@@ -35,13 +35,11 @@ const Recursive = ({ raw, sx, ...props }: Props) => {
             .replace('yellow'      , '#ff5');
     }, []);
 
-    const obfuscate = useObfuscate();
-
     const animationFrame = useCallback(() => {
         if (raw instanceof Array || !text) return;
         if (!raw.obfuscated) return;
         setText(obfuscate(raw.text ?? ''));
-    }, [obfuscate, raw, text]);
+    }, [raw, text]);
     useAnimationFrame(animationFrame);
 
     if (raw instanceof Array) {
