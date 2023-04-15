@@ -31,7 +31,7 @@ export const Home = () => {
                 <Box
                     as='h1'
                     color='white'
-                    fontFamily='JF Dot K12'
+                    fontFamily='Monocraft, JF Dot K12'
                     fontSize='min(50% + 5vw, 2.7rem)'
                     fontWeight='normal'
                     textShadow='2px 2px 2px black'
@@ -52,7 +52,7 @@ export const Home = () => {
                         sx={{
                             alignItems: 'center',
                             padding: 'min(3vw, 1rem)',
-                            fontFamily: 'JF Dot K12',
+                            fontFamily: 'Monocraft, JF Dot K12',
                             fontSize: 'min(50% + 3vw, 1.3rem)',
                             backgroundColor: 'btn.bg',
                             color: 'btn.text',
