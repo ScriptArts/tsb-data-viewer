@@ -33,7 +33,7 @@ export const Artifact = () => {
                                 to={`/artifact/${artifact.id}`}
                                 sx={{
                                     paddingX: '3',
-                                    backgroundColor: 'btn.bg',
+                                    backgroundColor: 'minecraft.tooltip.bg',
                                 }}
                                 style={{ width: '50%' }}
                             >
