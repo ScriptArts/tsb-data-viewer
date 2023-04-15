@@ -15,6 +15,14 @@ const GlobalStyle = createGlobalStyle`
             url(${BASE_URL}JF-Dot-K12.woff2)
             format('woff2');
     }
+    /* https://github.com/IdreesInc/Monocraft */
+    @font-face {
+        font-family: 'Monocraft';
+        font-display: swap;
+        src:
+            url(${BASE_URL}Monocraft.woff2)
+            format('woff2');
+    }
     body {
         margin: 0;
         padding: 0;
