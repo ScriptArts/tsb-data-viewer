@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Box, type BoxProps } from '@primer/react';
 import { useAnimationFrame } from '../hooks/useAnimationFrame';
 import { useObfuscate } from '../hooks/useObfuscate';
@@ -44,14 +44,6 @@ const Recursive = ({ raw, sx, ...props }: Props) => {
     }, [obfuscate, raw, text]);
     useAnimationFrame(animationFrame);
 
-    const transform = useMemo(() => {
-        if (raw instanceof Array) return undefined;
-        const arr: string[] = [];
-        if (raw.italic) arr.push('skewX(-25deg)');
-        if (raw.obfuscated) arr.push('scaleY(0.6)');
-        return arr.join(' ');
-    }, [raw]);
-
     if (raw instanceof Array) {
         const arr = [...raw].flat();
 
@@ -66,20 +58,9 @@ const Recursive = ({ raw, sx, ...props }: Props) => {
             }
         }
 
-        // 1文字ずつに分割して改行できるようにする(inline-blockだとブロックごと改行される)
-        const chars: TextComponentType[] = [];
-        for (const x of arr) {
-            if (!x.text) chars.push(x);
-            else {
-                for (const y of [...x.text]) {
-                    chars.push({ ...x, text: y });
-                }
-            }
-        }
-
         return (
             <>
-                {chars.map((x, i) => (
+                {arr.map((x, i) => (
                     <Recursive key={i} raw={x} {...props} />
                 ))}
             </>
@@ -89,15 +70,15 @@ const Recursive = ({ raw, sx, ...props }: Props) => {
     return (
         <Box
             as='span'
-            position='relative'
-            display='inline-block'
+            display='inline'
             color={replaceColor(raw.color) ?? 'white'}
-            fontFamily='JF Dot K12'
+            fontFamily='Monocraft, JF Dot K12'
             fontWeight={raw.bold ? 'bold' : undefined}
+            fontStyle={raw.italic ? 'italic' : undefined}
             sx={{
                 whiteSpace: 'pre-wrap',
                 textDecoration: raw.underlined ? 'underline': undefined,
-                transform,
+                fontVariantLigatures: 'none',
                 ...sx,
             }}
             {...props}
@@ -107,7 +88,7 @@ const Recursive = ({ raw, sx, ...props }: Props) => {
 
 export const TextComponent = (props: Props) => {
     return (
-        <Box lineHeight={props.fontSize}>
+        <Box sx={{ wordBreak: 'break-all' }}>
             <Recursive {...props} />
         </Box>
     );
