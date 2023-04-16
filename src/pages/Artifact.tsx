@@ -37,8 +37,8 @@ export const Artifact = () => {
                                 }}
                                 style={{ width: '50%' }}
                             >
-                                <Box as='span'>{artifact.id}</Box>
-                                <ActionList.Description variant='block' sx={{ marginY: '1' }}>
+                                <Box as='span' fontFamily='Monocraft'>{artifact.id}</Box>
+                                <ActionList.Description variant='block' sx={{ marginY: '2' }}>
                                     <TextComponent
                                         raw={artifact.name}
                                         fontSize='min(30% + 2vw, 1.3rem)'
