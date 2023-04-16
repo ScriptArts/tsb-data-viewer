@@ -9,7 +9,7 @@ type Props = BoxProps & {
     raw: TextComponentType | TextComponentType[];
 };
 
-const Recursive = ({ raw, sx, ...props }: Props) => {
+export const TextComponent = ({ raw, sx, ...props }: Props) => {
     const [text, setText] = useState(
         raw instanceof Array ? undefined
         : raw.text !== undefined ? raw.text
@@ -75,7 +75,7 @@ const Recursive = ({ raw, sx, ...props }: Props) => {
         return (
             <>
                 {arr.map((x, i) => (
-                    <Recursive key={i} raw={x} {...props} />
+                    <TextComponent key={i} raw={x} {...props} />
                 ))}
             </>
         );
@@ -98,13 +98,5 @@ const Recursive = ({ raw, sx, ...props }: Props) => {
             }}
             {...props}
         >{text}</Box>
-    );
-};
-
-export const TextComponent = (props: Props) => {
-    return (
-        <Box sx={{ wordBreak: 'break-all' }}>
-            <Recursive {...props} />
-        </Box>
     );
 };
