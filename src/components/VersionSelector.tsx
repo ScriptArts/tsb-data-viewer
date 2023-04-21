@@ -33,21 +33,20 @@ export const VersionSelector = (props: BoxProps) => {
             setSelected(selected);
             setSearchParams({ v: selected.text });
         }
-    }, [version, setSearchParams]);
+    }, [setSearchParams, version]);
 
     useEffect(() => {
-        if (filteredVersions.length > 0 && queryVersion) {
-            setSelected(filteredVersions.find(v => v.text === queryVersion));
-        }
-    }, [queryVersion, filteredVersions]);
+        const find = filteredVersions.find(v => v.text === queryVersion);
+        if (find) setSelected(find);
+    }, [filteredVersions, queryVersion]);
     useEffect(() => {
         if (filteredVersions.length > 0) {
             const defaultVersion = filteredVersions[1];
-            if (queryVersion === null || !filteredVersions.find(v => v.text === queryVersion)) {
+            if (queryVersion === null || !versions.find(v => v === queryVersion)) {
                 setSearchParams({ v: defaultVersion.text }, { replace: true });
             }
         }
-    }, [queryVersion, filteredVersions, setSearchParams]);
+    }, [filteredVersions, queryVersion, setSearchParams, versions]);
     useEffect(() => setVersion(selected?.text ?? ''), [selected, setVersion]);
 
     return (
