@@ -10,7 +10,7 @@ export const DefaultLayout = () => {
                 top='0'
                 left='0'
                 width='100vw'
-                zIndex='999'
+                zIndex='1'
             >
             <Header />
             </Box>
