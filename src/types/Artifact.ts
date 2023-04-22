@@ -86,6 +86,68 @@ export type AttackInfo = {
     attackRange?: unknown;
 };
 
+export type ByteTag = {
+    type: 'byte';
+    value: number;
+};
+export type ShortTag = {
+    type: 'short';
+    value: number;
+};
+export type IntTag = {
+    type: 'int';
+    value: number;
+};
+export type LongTag = {
+    type: 'long';
+    value: bigint;
+};
+export type FloatTag = {
+    type: 'float';
+    value: number;
+};
+export type DoubleTag = {
+    type: 'double';
+    value: number;
+};
+export type StringTag = {
+    type: 'string';
+    value: string;
+};
+export type ByteArrayTag = {
+    type: 'byte_array';
+    value: Int8Array;
+};
+export type IntArrayTag = {
+    type: 'int_array';
+    value: Int32Array;
+};
+export type LongArrayTag = {
+    type: 'long_array';
+    value: BigInt64Array;
+};
+export type ListTag = {
+    type: 'list';
+    value: NBTag[];
+};
+export type CompoundTag = {
+    type: 'compound';
+    value: Record<string, NBTag>;
+};
+export type NBTag =
+    | ByteTag
+    | ShortTag
+    | IntTag
+    | LongTag
+    | FloatTag
+    | DoubleTag
+    | StringTag
+    | ByteArrayTag
+    | IntArrayTag
+    | LongArrayTag
+    | ListTag
+    | CompoundTag;
+
 export type Artifact = {
     id: number;
     item: string;
@@ -103,5 +165,5 @@ export type Artifact = {
     specialCooldown?: number;
     disableCooldownMessage?: boolean;
     canUsedGod: 'ALL' | God[];
-    customNbt?: unknown;
+    customNbt?: CompoundTag;
 };
