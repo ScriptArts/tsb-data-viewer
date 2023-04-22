@@ -32,9 +32,11 @@ export const TextComponent = ({ raw, sx, ...props }: Props) => {
     }, []);
 
     const animationFrame = useCallback(() => {
-        if (raw instanceof Array || !raw.obfuscated) return;
+        if (raw instanceof Array || !raw.obfuscated) return false;
 
         setObfuscatedText(obfuscate(raw.text ?? ''));
+
+        return true;
     }, [raw]);
     useAnimationFrame(animationFrame);
 
