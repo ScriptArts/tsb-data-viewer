@@ -10,12 +10,7 @@ type Props = BoxProps & {
 };
 
 export const TextComponent = ({ raw, sx, ...props }: Props) => {
-    const [text, setText] = useState(
-        raw instanceof Array ? undefined
-        : raw.text !== undefined ? raw.text
-        : raw.nbt !== undefined ? `{${raw.nbt}}`
-        : undefined,
-    );
+    const [obfuscatedText, setObfuscatedText] = useState<string>();
 
     const replaceColor = useCallback((color?: string) => {
         if (!color) return color;
@@ -37,11 +32,18 @@ export const TextComponent = ({ raw, sx, ...props }: Props) => {
     }, []);
 
     const animationFrame = useCallback(() => {
-        if (raw instanceof Array || !text) return;
-        if (!raw.obfuscated) return;
-        setText(obfuscate(raw.text ?? ''));
-    }, [raw, text]);
+        if (raw instanceof Array || !raw.obfuscated) return;
+
+        setObfuscatedText(obfuscate(raw.text ?? ''));
+    }, [raw]);
     useAnimationFrame(animationFrame);
+
+    const text = useMemo(() => {
+        return raw instanceof Array ? undefined
+            : raw.text !== undefined ? raw.text
+            : raw.nbt !== undefined ? `{${raw.nbt}}`
+            : undefined;
+    }, [raw]);
 
     const rgb = useMemo(() => {
         if (raw instanceof Array) return undefined;
@@ -97,6 +99,6 @@ export const TextComponent = ({ raw, sx, ...props }: Props) => {
                 ...sx,
             }}
             {...props}
-        >{text}</Box>
+        >{obfuscatedText ?? text}</Box>
     );
 };
