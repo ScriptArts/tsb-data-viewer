@@ -1,15 +1,15 @@
 import { useMemo } from 'react';
 import { Box, Text, TreeView } from '@primer/react';
-import type { NBTag, CompoundTag } from '../types/Artifact';
+import type { Tag, CompoundTag } from '../types/Tag';
 
 type IconProps = {
-    tagType: NBTag['type'];
+    tagType: Tag['type'];
 };
 
 type ItemProps = {
     root?: boolean;
     name: string;
-    tag: NBTag;
+    tag: Tag;
 };
 
 type Props = {
@@ -17,7 +17,7 @@ type Props = {
 };
 
 const Icon = ({ tagType }: IconProps) => {
-    const colors: Record<NBTag['type'], string> = useMemo(() => ({
+    const colors: Record<Tag['type'], string> = useMemo(() => ({
         string: '#cecece',
         byte: '#b51b28',
         short: '#a309ac',
