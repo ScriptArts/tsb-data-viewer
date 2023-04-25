@@ -10,6 +10,7 @@ const isDev = mode === 'development';
 export default defineConfig({
     mode,
     define: {
+        REPO: JSON.stringify(repo),
         BASE_URL: JSON.stringify(base),
         APP_TITLE: JSON.stringify('TSB Data Viewer'),
         DATA_REPO: JSON.stringify('MT224244/tsb-data'),
