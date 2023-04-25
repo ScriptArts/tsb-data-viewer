@@ -1,9 +1,10 @@
 import { Navigate, Route, RouterProvider, createHashRouter, createRoutesFromElements } from 'react-router-dom';
-import { Home } from './pages/Home';
 import { Helmet } from 'react-helmet-async';
 import { useAppContext } from './contexts/AppContext';
-import { Artifact } from './pages/Artifact';
 import { DefaultLayout } from './layouts/DefaultLayout';
+import { Home } from './pages/Home';
+import { Artifact } from './pages/Artifact';
+import { ArtifactDetail } from './pages/ArtifactDetail';
 
 const router = createHashRouter(createRoutesFromElements(
     <Route
@@ -12,11 +13,14 @@ const router = createHashRouter(createRoutesFromElements(
         handle={{ name: APP_TITLE }}
     >
         <Route index element={<Home />} />
-        <Route
-            path='artifact'
-            element={<Artifact />}
-            handle={{ name: '神器' }}
-        />
+        <Route path='artifact' handle={{ name: '神器' }}>
+            <Route index element={<Artifact />} />
+            <Route
+                path=':id'
+                element={<ArtifactDetail />}
+                handle={{ name: '詳細' }}
+            />
+        </Route>
         <Route path='*' element={<Navigate replace to='/' />} />
     </Route>,
 ));
