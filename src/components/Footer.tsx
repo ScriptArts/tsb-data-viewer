@@ -11,7 +11,10 @@ export const Footer = () => {
             sx={{ columnGap: '2' }}
         >
             <Box as='small'>&copy; 2023 MT224244</Box>
-            <Link href={`https://github.com/${REPO}`}>GitHub</Link>
+            <Link
+                href={`https://github.com/${REPO}`}
+                sx={{ color: 'fg.default' }}
+            >GitHub</Link>
         </Box>
     );
 };
