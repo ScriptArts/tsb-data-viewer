@@ -1,10 +1,12 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
 import { Box } from '@primer/react';
 import { Header } from '../components/Header';
 
 export const DefaultLayout = () => {
     return (
         <>
+            <ScrollRestoration />
+
             <Box
                 position='sticky'
                 top='0'
@@ -12,7 +14,7 @@ export const DefaultLayout = () => {
                 width='100vw'
                 zIndex='1'
             >
-            <Header />
+                <Header />
             </Box>
             <Outlet />
         </>
