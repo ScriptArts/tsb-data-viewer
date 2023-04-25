@@ -4,6 +4,7 @@ import { useAnimationFrame } from '../hooks/useAnimationFrame';
 import { obfuscate } from '../utils/obfuscate';
 import { colorToRgb } from '../utils/colorToRgb';
 import type { TextComponent as TextComponentType } from '../types/Artifact';
+import { useAppContext } from '../contexts/AppContext';
 
 type Props = BoxProps & {
     raw: TextComponentType | TextComponentType[];
@@ -11,6 +12,8 @@ type Props = BoxProps & {
 
 export const TextComponent = ({ raw, sx, ...props }: Props) => {
     const [obfuscatedText, setObfuscatedText] = useState<string>();
+
+    const { langData } = useAppContext();
 
     const replaceColor = useCallback((color?: string) => {
         if (!color) return color;
@@ -41,11 +44,20 @@ export const TextComponent = ({ raw, sx, ...props }: Props) => {
     useAnimationFrame(animationFrame);
 
     const text = useMemo(() => {
-        return raw instanceof Array ? undefined
-            : raw.text !== undefined ? raw.text
-            : raw.nbt !== undefined ? `{${raw.nbt}}`
-            : undefined;
-    }, [raw]);
+        if (raw instanceof Array) return undefined;
+
+        if (raw.text !== undefined) {
+            return raw.text;
+        }
+        else if (raw.nbt !== undefined) {
+            return `{${raw.nbt}}`;
+        }
+        else if (raw.translate !== undefined && langData) {
+            return langData[raw.translate];
+        }
+
+        return undefined;
+    }, [langData, raw]);
 
     const rgb = useMemo(() => {
         if (raw instanceof Array) return undefined;

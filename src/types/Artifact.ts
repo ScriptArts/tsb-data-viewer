@@ -75,6 +75,7 @@ export type TextComponent = {
     underlined?: boolean;
     strikethrough?: boolean;
     obfuscated?: boolean;
+    translate?: string;
     storage?: string;
     nbt?: string;
 };

@@ -2,12 +2,14 @@ import { ReactNode, createContext, useCallback, useContext, useState } from 'rea
 import { useVersions } from '../hooks/useVersions';
 import { useArtifacts } from '../hooks/useArtifacts';
 import type { Artifact } from '../types/Artifact';
+import { useLangDate as useLangData } from '../hooks/useLangData';
 
 const context = createContext({} as {
     title: string;
     versions: string[];
     version: string | undefined;
     artifacts: Artifact[];
+    langData: Record<string, string> | undefined;
     setTitle: (title?: string) => void;
     setVersion: (version: string) => void;
 });
@@ -28,6 +30,7 @@ export const AppContext = (props: Props) => {
 
     const versions = useVersions();
     const artifacts = useArtifacts(version);
+    const langData = useLangData();
 
     const setTitle = useCallback((title?: string) => {
         _setTitle(APP_TITLE + (title ? ` / ${title}` : ''));
@@ -40,6 +43,7 @@ export const AppContext = (props: Props) => {
                 versions,
                 version,
                 artifacts,
+                langData,
                 setTitle,
                 setVersion,
             }}
