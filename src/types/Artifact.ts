@@ -42,8 +42,7 @@ export type TriggerId =
     | 'keepSneak4s'
     | 'keepSneak5s'
     | 'keepSneak10s'
-    | 'passive'
-    | 'rejoin';
+    | 'passive';
 
 export type AttackType =
     | 'Physical'
@@ -81,7 +80,7 @@ export type TextComponent = {
 };
 
 export type AttackInfo = {
-    damage?: unknown | unknown[];
+    damage?: TextComponent | TextComponent[];
     attackType?: AttackType[];
     elementType?: ElementType[];
     bypassResist?: boolean;
