@@ -9,7 +9,6 @@ export const Home = () => {
             <Title />
             <Helmet>
                 <link rel='preload' as='image' type='image/png' href={`${BASE_URL}icon.png`} />
-                <link rel='preload' as='image' type='image/png' href={`${BASE_URL}artifact.png`} />
             </Helmet>
 
             <Box
@@ -58,19 +57,7 @@ export const Home = () => {
                             color: 'btn.text',
                             textAlign: 'center',
                         }}
-                    >
-                        <ActionList.LeadingVisual>
-                            <Box
-                                as='img'
-                                src='artifact.png'
-                                alt=''
-                                width='min(50% + 3vw, 2rem)'
-                                height='min(50% + 3vw, 2rem)'
-                                sx={{ imageRendering: 'pixelated' }}
-                            />
-                        </ActionList.LeadingVisual>
-                        神器
-                    </ActionList.LinkItem>
+                    >神器</ActionList.LinkItem>
                 </ActionList>
             </Box>
         </>
