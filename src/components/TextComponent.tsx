@@ -62,6 +62,17 @@ export const TextComponent = ({ raw, sx, ...props }: Props) => {
         return `1px 1px 0 rgba(${r}, ${g}, ${b}, 0.3)`;
     }, [rgb]);
 
+    const textDecoration = useMemo(() => {
+        if (raw instanceof Array) return undefined;
+
+        const arr: string[] = [];
+
+        if (raw.underlined) arr.push('underline');
+        if (raw.strikethrough) arr.push('line-through');
+
+        return arr.join(' ');
+    }, [raw]);
+
     if (raw instanceof Array) {
         const arr = [...raw].flat();
 
@@ -96,7 +107,7 @@ export const TextComponent = ({ raw, sx, ...props }: Props) => {
             textShadow={textShadow}
             sx={{
                 whiteSpace: 'pre-wrap',
-                textDecoration: raw.underlined ? 'underline': undefined,
+                textDecoration,
                 fontVariantLigatures: 'none',
                 ...sx,
             }}
